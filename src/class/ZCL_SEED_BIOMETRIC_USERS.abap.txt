@@ -1,0 +1,39 @@
+CLASS zcl_seed_biometric_users DEFINITION
+  PUBLIC FINAL CREATE PUBLIC.
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+
+ENDCLASS.
+
+CLASS zcl_seed_biometric_users IMPLEMENTATION.
+
+  METHOD if_oo_adt_classrun~main.
+
+    DELETE FROM zbiometric_users.
+
+    INSERT zbiometric_users FROM TABLE @( VALUE #(
+      (
+        client        = sy-mandt
+        fingerprintid = 'A3F8C1D29E4B7056F8A1C3D29E4B7056F8A1C3D29E4B7056F8A1C3D29E4B7056'
+        firstname     = 'Rajesh'
+        lastname      = 'Kumar'
+      )
+      (
+        client        = sy-mandt
+        fingerprintid = 'B7E2A04D1F9C8365B7E2A04D1F9C8365B7E2A04D1F9C8365B7E2A04D1F9C8365'
+        firstname     = 'Priya'
+        lastname      = 'Sharma'
+      )
+    ) ).
+
+    IF sy-subrc = 0.
+      COMMIT WORK.
+      out->write( 'Test users seeded successfully.' ).
+    ELSE.
+      out->write( 'Insert failed. Check table activation.' ).
+    ENDIF.
+
+  ENDMETHOD.
+
+ENDCLASS.

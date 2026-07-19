@@ -1,0 +1,13 @@
+@EndUserText.label : 'Biometric User Registry'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+define table zbiometric_users {
+
+  key client        : abap.clnt not null;
+  key fingerprintid : abap.char(64) not null;
+  firstname         : abap.char(40);
+  lastname          : abap.char(40);
+
+}

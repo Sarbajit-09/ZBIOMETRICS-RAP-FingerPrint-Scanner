@@ -1,0 +1,4 @@
+@EndUserText.label: 'Biometric User Service Definition'
+define service ZUI_BIOMETRIC_USERS {
+  expose ZI_BiometricUser as BiometricUser;
+}
